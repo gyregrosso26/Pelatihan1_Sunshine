@@ -8,6 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -57,6 +60,39 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+            String[] weathers = {
+                    "Today-Sunny-88/64",
+                    "Tomorrow-Sunny-78/66",
+                    "Monday-Rain-70/64",
+                    "Tuesday-Stormy-88/64",
+                    "Wednesday-Foggy-81/56",
+                    "Thursday-Cloudy-78/77",
+                    "Friday-Sunny-98/65",
+                    "Saturday-Sunny-88/64",
+                    "Sunday-Sunny-83/63",
+                    "Monday-Rain-80/55",
+                    "Tuesday-Rain-88/64",
+                    "Wednesday-Foggy-81/56",
+                    "Thursday-Cloudy-86/61",
+                    "Friday-Sunny-87/66",
+                    "Saturday-Rain-88/67",
+                    "Sunday-Rain-87/64",
+                    "Monday-Rain-89/65",
+                    "Tuesday-Sunny-65/45",
+                    "Wednesday-Sunny-65/55",
+                    "Thursday-Foggy-77/67",
+                    "Friday-Sunny-90/65"
+            };
+
+            ArrayAdapter<String> forecastAdapter = new ArrayAdapter<String>(
+                    getActivity(),
+                    R.layout.list_item_forecast,
+                    R.id.list_item_forecast_Text,
+                    weathers);
+
+            ListView listView = (ListView)rootView.findViewById(R.id.listview_forecast);
+            listView.setAdapter(forecastAdapter);
             return rootView;
         }
     }
